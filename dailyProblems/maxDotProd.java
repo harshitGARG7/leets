@@ -1,4 +1,3 @@
-package dailyProblems;
 class Solution {
     public int maxDotProduct(int[] nums1, int[] nums2) {
         int n = nums1.length;

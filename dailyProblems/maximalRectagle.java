@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 class Solution {
     public int maximalRectangle(char[][] matrix) {
         if (matrix == null || matrix.length == 0)
