@@ -91,7 +91,7 @@ class Solution {
                     break;
 
                 for (int srcId : node.wordIds) {
-                    String srcStr = source.substring(i, j + 1);
+                    // String srcStr = source.substring(i, j + 1);
                     String tgtStr = target.substring(i, j + 1);
 
                     Integer tgtId = idMap.get(tgtStr);
