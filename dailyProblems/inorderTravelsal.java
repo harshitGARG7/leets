@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution {
+class Solution {
     public TreeNode balanceBST(TreeNode root) {
         List<Integer> inorder = new ArrayList<>();
         inorderTraversal(root, inorder);
@@ -9,14 +9,16 @@ public class Solution {
     }
 
     private void inorderTraversal(TreeNode root, List<Integer> inorder) {
-        if (root == null) return;
+        if (root == null)
+            return;
         inorderTraversal(root.left, inorder);
         inorder.add(root.val);
         inorderTraversal(root.right, inorder);
     }
 
     private TreeNode buildBalancedBST(List<Integer> arr, int left, int right) {
-        if (left > right) return null;
+        if (left > right)
+            return null;
 
         int mid = left + (right - left) / 2;
         TreeNode root = new TreeNode(arr.get(mid));
@@ -24,7 +26,4 @@ public class Solution {
         root.right = buildBalancedBST(arr, mid + 1, right);
         return root;
     }
-}
- {
-    
 }

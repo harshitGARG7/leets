@@ -1,3 +1,6 @@
+import java.util.Set;
+import java.util.HashSet;
+
 class Solution {
     public int longestBalancedSubarray(int[] nums) {
         int n = nums.length;

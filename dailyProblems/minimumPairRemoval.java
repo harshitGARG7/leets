@@ -1,9 +1,9 @@
-public import java.util.*;
+import java.util.*;
 
 class Solution {
     class Node {
         long val;
-        int id; 
+        int id;
         int version; // Incremented every time the node is modified
         Node prev, next;
 
@@ -29,7 +29,8 @@ class Solution {
 
         @Override
         public int compareTo(Pair other) {
-            if (this.sum != other.sum) return Long.compare(this.sum, other.sum);
+            if (this.sum != other.sum)
+                return Long.compare(this.sum, other.sum);
             // Tie-breaker: leftmost pair based on current structure
             return Integer.compare(this.left.id, other.left.id);
         }
@@ -37,7 +38,8 @@ class Solution {
 
     public int minimumPairRemoval(int[] nums) {
         int n = nums.length;
-        if (n < 2) return 0;
+        if (n < 2)
+            return 0;
 
         Node[] nodeArray = new Node[n];
         int inversions = 0;
@@ -50,7 +52,8 @@ class Solution {
         for (int i = 0; i < n; i++) {
             if (i > 0) {
                 nodeArray[i].prev = nodeArray[i - 1];
-                if (nodeArray[i - 1].val > nodeArray[i].val) inversions++;
+                if (nodeArray[i - 1].val > nodeArray[i].val)
+                    inversions++;
             }
             if (i < n - 1) {
                 nodeArray[i].next = nodeArray[i + 1];
@@ -58,7 +61,8 @@ class Solution {
             }
         }
 
-        if (inversions == 0) return 0;
+        if (inversions == 0)
+            return 0;
 
         int ops = 0;
         while (!pq.isEmpty()) {
@@ -72,9 +76,12 @@ class Solution {
             }
 
             // Update inversion count before the merge
-            if (L.prev != null && L.prev.val > L.val) inversions--;
-            if (L.val > R.val) inversions--;
-            if (R.next != null && R.val > R.next.val) inversions--;
+            if (L.prev != null && L.prev.val > L.val)
+                inversions--;
+            if (L.val > R.val)
+                inversions--;
+            if (R.next != null && R.val > R.next.val)
+                inversions--;
 
             // Merge logic
             L.val = L.val + R.val;
@@ -85,19 +92,22 @@ class Solution {
             }
 
             // Re-check inversions after merge
-            if (L.prev != null && L.prev.val > L.val) inversions++;
-            if (L.next != null && L.val > L.next.val) inversions++;
+            if (L.prev != null && L.prev.val > L.val)
+                inversions++;
+            if (L.next != null && L.val > L.next.val)
+                inversions++;
 
             ops++;
-            if (inversions == 0) return ops;
+            if (inversions == 0)
+                return ops;
 
             // Add new neighbors to PQ with current versions
-            if (L.prev != null) pq.add(new Pair(L.prev, L));
-            if (L.next != null) pq.add(new Pair(L, L.next));
+            if (L.prev != null)
+                pq.add(new Pair(L.prev, L));
+            if (L.next != null)
+                pq.add(new Pair(L, L.next));
         }
 
         return ops;
     }
-} {
-    
 }
